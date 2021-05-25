@@ -19,3 +19,16 @@ jobs:
 
       - name: Build iOS
         run: flutter build ios --release --no-codesign
+        
+      - name: Generate ipa
+        run: |
+             mkdir payload
+             mv build/ios/iphoneos/Runner.app payload/
+             zip payload
+             mv payload.zip ios-app.ipa
+       
+      - uses: actions/upload-artifact@v2
+        with:
+          name: release
+          path: ios-app.ipa
+             ls -la
