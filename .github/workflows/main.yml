@@ -24,7 +24,7 @@ jobs:
         run: |
              mkdir payload
              mv build/ios/iphoneos/Runner.app payload/
-             zip payload
+             zip -r payload.zip payload
              mv payload.zip ios-app.ipa
        
       - uses: actions/upload-artifact@v2
